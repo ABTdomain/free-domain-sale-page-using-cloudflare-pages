@@ -3,6 +3,8 @@
 Live demo: <a href="https://domainpickup.com" target="_blank">domainpickup.com</a>   (better open in a new tab)
 Example: <a href="https://5.domainpickup.com" target="_blank">5.domainpickup.com</a> (better open in a new tab)
 
+We’ve created a separate repository for managing multiple domain names: https://github.com/ABTdomain/Domain-Portfolio-Pages
+. With this new repository, you can set up your own domain sales management system.
 
 A free and customizable **domain sale landing page** powered by [Cloudflare Pages](https://pages.cloudflare.com/).
 

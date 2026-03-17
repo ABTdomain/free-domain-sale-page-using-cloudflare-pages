@@ -1,6 +1,38 @@
 // ============================================
 // PAGE GENERATOR - DO NOT MODIFY
 // ============================================
+
+// Google Fonts loader — only loads fonts that are actually needed
+const GOOGLE_FONTS_MAP = {
+    'IBM Plex Mono': 'IBM+Plex+Mono:wght@400;600;700',
+    'Space Mono': 'Space+Mono:wght@400;700',
+    'Outfit': 'Outfit:wght@300;400;600;700',
+    'Source Serif 4': 'Source+Serif+4:wght@400;600;700',
+    'Playfair Display': 'Playfair+Display:wght@400;700;900',
+    'Fira Code': 'Fira+Code:wght@400;600;700',
+    'Noto Serif JP': 'Noto+Serif+JP:wght@400;700',
+    'Cormorant Garamond': 'Cormorant+Garamond:wght@400;600;700',
+    'DM Sans': 'DM+Sans:wght@400;500;700',
+    'Press Start 2P': 'Press+Start+2P',
+    'Libre Baskerville': 'Libre+Baskerville:wght@400;700'
+};
+
+function loadGoogleFonts(template) {
+    const fontsToLoad = new Set();
+    [template.font, template.fontHeading].forEach(fontStr => {
+        if (!fontStr) return;
+        const family = fontStr.split(',')[0].replace(/'/g, '').trim();
+        if (GOOGLE_FONTS_MAP[family]) {
+            fontsToLoad.add(GOOGLE_FONTS_MAP[family]);
+        }
+    });
+    if (fontsToLoad.size === 0) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `https://fonts.googleapis.com/css2?${[...fontsToLoad].map(f => `family=${f}`).join('&')}&display=swap`;
+    document.head.appendChild(link);
+}
+
 class DomainPage {
     constructor() {
         this.config = window.DOMAIN_CONFIG || DOMAIN_CONFIG;
@@ -10,6 +42,7 @@ class DomainPage {
     }
 
     init() {
+        loadGoogleFonts(this.template);
         this.setPageTitle();
         this.setMetaTags();
         this.applyTheme();
@@ -17,15 +50,14 @@ class DomainPage {
         this.addEventListeners();
         this.generateFavicon();
         this.updateSEOFiles();
-
     }
 
     setPageTitle() {
         const price = this.formatPrice();
-        const firstFeature = this.config.features && this.config.features.length > 0 
-            ? this.config.features[0] 
+        const firstFeature = this.config.features && this.config.features.length > 0
+            ? this.config.features[0]
             : '';
-        
+
             if (firstFeature) {
                 document.title = `${this.config.domain} is for sale - ${firstFeature} - ${price}`;
             } else {
@@ -35,17 +67,17 @@ class DomainPage {
 
     setMetaTags() {
         const price = this.formatPrice();
-        const firstFeature = this.config.features && this.config.features.length > 0 
-            ? this.config.features[0] 
+        const firstFeature = this.config.features && this.config.features.length > 0
+            ? this.config.features[0]
             : '';
-        
+
         const keywords = [
             this.config.domain,
             'domain for sale',
             'buy domain',
             'premium domain'
         ];
-        
+
         let description;
         if (firstFeature) {
             description = `${this.config.domain} - ${firstFeature}. Available for purchase at ${price}. ${this.config.priceNegotiable ? 'Price negotiable.' : 'Fixed price.'}`;
@@ -56,7 +88,7 @@ class DomainPage {
         if (descMeta) {
             descMeta.content = description;
         }
-        
+
         let keywordsMeta = document.querySelector('meta[name="keywords"]');
         if (!keywordsMeta) {
             keywordsMeta = document.createElement('meta');
@@ -66,14 +98,14 @@ class DomainPage {
         if (this.config.features && this.config.features.length > 0) {
             keywords.push(...this.config.features);
         }
-        
+
         keywordsMeta.content = keywords.join(', ');
-        
+
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle) {
             ogTitle.content = firstFeature ? `${this.config.domain} - ${firstFeature}` : `${this.config.domain} is for sale`;
         }
-        
+
         const ogDesc = document.querySelector('meta[property="og:description"]');
         if (ogDesc) {
             ogDesc.content = description;
@@ -86,29 +118,98 @@ class DomainPage {
     }
 
     applyTheme() {
-            const t = this.template;
-            document.documentElement.style.setProperty('--primary', t.primaryColor);
-            document.documentElement.style.setProperty('--secondary', t.secondaryColor);
-            document.documentElement.style.setProperty('--text', t.textColor);
-            document.documentElement.style.setProperty('--button', t.buttonColor);
-            document.documentElement.style.setProperty('--button-text', t.buttonTextColor);
-            
-            document.body.style.background = t.background;
-            document.body.style.backgroundAttachment = 'fixed';
-            document.body.style.backgroundSize = '100vw 100vh';
-            document.body.style.backgroundRepeat = 'no-repeat';
-            document.body.style.color = t.textColor;
-            
-            if (parseInt(this.config.template) === 4) {
-                document.body.classList.add('minimal-theme');
+        const t = this.template;
+        const root = document.documentElement;
+        const body = document.body;
+
+        // --- Core CSS variables ---
+        root.style.setProperty('--primary', t.primaryColor);
+        root.style.setProperty('--secondary', t.secondaryColor);
+        root.style.setProperty('--text', t.textColor);
+        root.style.setProperty('--button', t.buttonColor);
+        root.style.setProperty('--button-text', t.buttonTextColor);
+
+        // --- Background ---
+        body.style.background = t.background;
+        body.style.backgroundAttachment = 'fixed';
+        body.style.backgroundSize = '100vw 100vh';
+        body.style.backgroundRepeat = 'no-repeat';
+        body.style.color = t.textColor;
+
+        // --- Extended: Typography ---
+        if (t.font) {
+            body.style.fontFamily = t.font;
+        }
+        if (t.fontHeading) {
+            root.style.setProperty('--font-heading', t.fontHeading);
+        }
+        if (t.fontSizeScale) {
+            root.style.setProperty('--font-scale', t.fontSizeScale);
+        }
+        if (t.letterSpacing) {
+            root.style.setProperty('--letter-spacing', t.letterSpacing);
+        }
+        if (t.lineHeight) {
+            root.style.setProperty('--line-height', t.lineHeight);
+        }
+
+        // --- Extended: Card styling ---
+        if (t.borderRadius !== undefined) {
+            root.style.setProperty('--border-radius', t.borderRadius);
+        }
+        if (t.cardBackground) {
+            root.style.setProperty('--card-bg', t.cardBackground);
+        }
+        if (t.cardBorder) {
+            root.style.setProperty('--card-border', t.cardBorder);
+        }
+        if (t.cardBorderTop) {
+            root.style.setProperty('--card-border-top', t.cardBorderTop);
+        }
+        if (t.cardBorderBottom) {
+            root.style.setProperty('--card-border-bottom', t.cardBorderBottom);
+        }
+        if (t.cardBlur) {
+            root.style.setProperty('--card-blur', t.cardBlur);
+        }
+        if (t.cardShadow) {
+            root.style.setProperty('--card-shadow', t.cardShadow);
+        }
+
+        // --- Extended: Text effects ---
+        if (t.textShadow) {
+            root.style.setProperty('--text-shadow', t.textShadow);
+        }
+
+        // --- Extended: Background pattern overlay ---
+        if (t.backgroundPattern) {
+            const overlay = document.createElement('div');
+            overlay.className = 'bg-pattern-overlay';
+            overlay.style.cssText = `position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;background-image:${t.backgroundPattern};`;
+            if (t.backgroundPatternSize) {
+                overlay.style.backgroundSize = t.backgroundPatternSize;
             }
-            
-            if (parseInt(this.config.template) === 5) {
-                document.body.classList.add('crypto-theme');
-            }
+            body.prepend(overlay);
+            document.getElementById('app').style.position = 'relative';
+            document.getElementById('app').style.zIndex = '1';
+        }
+
+        // --- Apply card style class to body ---
+        if (t.cardStyle) {
+            body.classList.add(`theme-${t.cardStyle}`);
+        }
+
+        // --- Legacy theme classes (backward compatible) ---
+        if (this.config.template === 4) body.classList.add('minimal-theme');
+        if (this.config.template === 5) body.classList.add('crypto-theme');
+
+        // --- Terminal scanline effect ---
+        if (t.scanline) {
+            const scanline = document.createElement('div');
+            scanline.className = 'scanline-overlay';
+            body.prepend(scanline);
+        }
     }
-
-
 
     generateFavicon() {
         const firstLetter = this.config.domain.charAt(0).toUpperCase();
@@ -121,14 +222,14 @@ class DomainPage {
         gradient.addColorStop(1, this.template.secondaryColor);
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
-    
+
         ctx.fillStyle = this.template.textColor || '#ffffff';
-        
+
         ctx.font = 'bold 36px Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(firstLetter, 32, 32);
-        
+
         const link = document.createElement('link');
         link.rel = 'icon';
         link.type = 'image/x-icon';
@@ -142,9 +243,54 @@ class DomainPage {
 
     generateHTML() {
         const price = this.formatPrice();
-        
+        const t = this.template;
+
+        // --- CTA button inline styles ---
+        let ctaStyle = `background: ${t.buttonColor}; color: ${t.buttonTextColor}`;
+        let ctaSecStyle = `color: ${t.textColor}; border-color: ${t.buttonColor}`;
+        let ctaExtraAttr = '';
+        let ctaSecExtraAttr = '';
+
+        if (t.ctaStyle === 'brutalist') {
+            ctaStyle += '; border-radius: 0; box-shadow: 4px 4px 0 #000; border: 3px solid #000; text-transform: uppercase; letter-spacing: 0.05em';
+            ctaSecStyle += '; border-radius: 0; border: 3px solid #000; box-shadow: 4px 4px 0 #000';
+        } else if (t.ctaStyle === 'glass') {
+            ctaStyle += '; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2)';
+            ctaSecStyle += '; backdrop-filter: blur(12px)';
+        } else if (t.ctaStyle === 'editorial') {
+            ctaStyle += '; border-radius: 2px; box-shadow: none; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.9rem';
+            ctaSecStyle += '; border-radius: 2px; border-width: 1px';
+        } else if (t.ctaStyle === 'terminal') {
+            ctaStyle += '; border-radius: 0; box-shadow: 0 0 12px rgba(0, 255, 65, 0.4); border: 1px solid #00ff41; text-transform: uppercase';
+            ctaSecStyle += '; border-radius: 0; box-shadow: 0 0 8px rgba(0, 255, 65, 0.2)';
+        } else if (t.ctaStyle === 'wabi') {
+            ctaStyle += '; border-radius: 0; box-shadow: none; letter-spacing: 0.2em; font-size: 0.85rem; padding: 1rem 2.5rem';
+            ctaSecStyle += '; border-radius: 0; border-width: 1px';
+        } else if (t.ctaStyle === 'neumorph') {
+            ctaStyle += '; box-shadow: 6px 6px 12px #b8bec7, -6px -6px 12px #ffffff; border: none';
+            ctaSecStyle += '; box-shadow: inset 4px 4px 8px #b8bec7, inset -4px -4px 8px #ffffff; border: none; background: #e0e5ec';
+        } else if (t.ctaStyle === 'retro') {
+            ctaStyle += '; border-radius: 0; box-shadow: 4px 4px 0 #48dbfb; border: 2px solid #ff6ac1; text-transform: uppercase';
+            ctaSecStyle += '; border-radius: 0; box-shadow: 4px 4px 0 #ff6ac1';
+        } else if (t.ctaStyle === 'newspaper') {
+            ctaStyle += '; border-radius: 0; box-shadow: none; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700';
+            ctaSecStyle += '; border-radius: 0; border-width: 2px';
+        } else if (t.ctaStyle === 'noir') {
+            ctaStyle += '; border-radius: 0; box-shadow: none; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem';
+            ctaSecStyle += '; border-radius: 0; border-color: rgba(212, 175, 55, 0.4)';
+        } else if (t.ctaStyle === 'candy') {
+            ctaStyle += '; border-radius: 50px; box-shadow: 0 6px 24px rgba(233, 30, 144, 0.3); font-weight: 700';
+            ctaSecStyle += '; border-radius: 50px; border-color: rgba(233, 30, 144, 0.3); color: #e91e90';
+        } else if (t.ctaStyle === 'blueprint') {
+            ctaStyle += '; border-radius: 0; box-shadow: none; border: 2px solid #fff; text-transform: uppercase; letter-spacing: 0.08em';
+            ctaSecStyle += '; border-radius: 0; border-color: rgba(255,255,255,0.3)';
+        } else if (t.ctaStyle === 'zen') {
+            ctaStyle += '; border-radius: 2px; box-shadow: none; letter-spacing: 0.2em; font-size: 0.85rem; text-transform: uppercase';
+            ctaSecStyle += '; border-radius: 2px; border-width: 1px; border-color: rgba(143, 188, 143, 0.3)';
+        }
+
         let html = `
-            
+
             <main>
                 <!-- Hero Section -->
                 <section class="hero">
@@ -153,8 +299,8 @@ class DomainPage {
                     <div class="domain-price">${price}</div>
                     <div class="price-badge">${this.config.priceNegotiable ? 'Price Negotiable' : 'Fixed Price'}</div>
                     <div class="cta-buttons">
-                        <a href="#contact" class="cta-button" style="background: ${this.template.buttonColor}; color: ${this.template.buttonTextColor}">Get This Domain</a>
-                        <a href="https://domainbeat.com?domain=${this.config.domain}" target="_blank" rel="noopener" class="cta-button-secondary" style="color: ${this.template.textColor}; border-color: ${this.template.buttonColor}">Analyze Domain</a>
+                        <a href="#contact" class="cta-button" style="${ctaStyle}">Get This Domain</a>
+                        <a href="https://domainkits.com/ai/analysis?domain=${this.config.domain}" target="_blank" rel="noopener" class="cta-button-secondary" style="${ctaSecStyle}">Analyze Domain</a>
                     </div>
                 </section>`;
 
@@ -164,14 +310,14 @@ class DomainPage {
                     <div class="container">
                         <h2 class="section-title">Why This Domain</h2>
                         <div class="grid">`;
-            
+
             this.config.features.forEach((feature) => {
                 html += `
                             <div class="card">
                                 ${feature}
                             </div>`;
             });
-            
+
             html += `
                         </div>
                     </div>
@@ -205,7 +351,7 @@ class DomainPage {
                 name: 'WeChat',
                 urlPrefix: '#',
                 urlSuffix: '',
-                isDisplay: true 
+                isDisplay: true
             },
             facebook: {
                 name: 'Facebook',
@@ -377,7 +523,7 @@ class DomainPage {
             gaScript1.async = true;
             gaScript1.src = `https://www.googletagmanager.com/gtag/js?id=${this.config.googleAnalytics}`;
             document.head.appendChild(gaScript1);
-            
+
             const gaScript2 = document.createElement('script');
             gaScript2.innerHTML = `
                 window.dataLayer = window.dataLayer || [];

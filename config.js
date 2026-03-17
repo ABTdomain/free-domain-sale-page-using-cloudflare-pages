@@ -17,9 +17,11 @@ let DOMAIN_CONFIG = {
     // Example: "G-XXXXXXXXXX" or "UA-XXXXXXXXX-X"
     googleAnalytics: "",
     
-    // Template theme (1-12), see templates.js for all options
-    // 1=Tech, 2=Finance, 3=Creative, 4=Minimal, 5=Crypto, 6=Corporate
-    // 7=Luxury, 8=Ocean, 9=Sunset, 10=Dark, 11=Nature, 12=Royal
+    // Template theme (1-24), see templates.js for all options
+    // CLASSIC (1-12): 1=Tech, 2=Finance, 3=Creative, 4=Minimal, 5=Crypto, 6=Corporate
+    //   7=Luxury, 8=Ocean, 9=Sunset, 10=Dark, 11=Nature, 12=Royal
+    // EXTENDED (13-19): 13=Brutalist, 14=Glass, 15=Editorial, 16=Terminal, 17=Wabi-Sabi, 18=Neumorph, 19=Retro
+    // MORE (20-24): 20=Newspaper, 21=Noir, 22=Candy, 23=Blueprint, 24=Zen Garden
     template: 5,
     
     // Whether the price is negotiable (true/false)

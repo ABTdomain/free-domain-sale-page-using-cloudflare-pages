@@ -1,3 +1,22 @@
+/* ============================================
+ * BASE STYLES & SALE PAGE STYLES
+ * ============================================ */
+
+:root {
+    --border-radius: 20px;
+    --card-bg: transparent;
+    --card-border: 2px solid rgba(255, 255, 255, 0.3);
+    --card-border-top: none;
+    --card-border-bottom: none;
+    --card-blur: 0;
+    --card-shadow: none;
+    --font-heading: inherit;
+    --font-scale: 1;
+    --letter-spacing: normal;
+    --line-height: 1.6;
+    --text-shadow: none;
+}
+
 html {
     height: 100%;
 }
@@ -10,8 +29,8 @@ body {
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     position: relative;
+    line-height: var(--line-height);
 }
-
 
 .hero {
     display: flex;
@@ -20,6 +39,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 3rem 1rem 2rem 1rem;
+    min-height: 60vh;
 }
 
 .domain-badge {
@@ -36,50 +56,36 @@ body {
 }
 
 h1.domain-name {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-family: var(--font-heading);
+    font-size: clamp(calc(2.5rem * var(--font-scale)), calc(8vw * var(--font-scale)), calc(6rem * var(--font-scale)));
     font-weight: 900;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
     min-height: 1.2em;
     word-break: break-word;
-}
-.domain-name {
     animation: fadeInScale 0.6s ease-out;
-    font-size: 3rem; 
+    text-shadow: var(--text-shadow);
 }
-
-
 
 .domain-price {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-family: var(--font-heading);
+    font-size: clamp(calc(2rem * var(--font-scale)), calc(5vw * var(--font-scale)), calc(3.5rem * var(--font-scale)));
     font-weight: 700;
     margin-bottom: 0.5rem;
     animation: slideUp 0.8s ease 0.2s both;
     opacity: 0.95;
+    text-shadow: var(--text-shadow);
 }
 
 .price-badge {
     display: inline-block;
     padding: 0.3rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     font-size: 1rem;
     margin-bottom: 1rem;
     animation: slideUp 0.8s ease 0.3s both;
     opacity: 0.9;
 }
-
-.minimal-theme .card {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-}
-
-.minimal-theme .price-badge,
-.minimal-theme .domain-badge {
-    background: rgba(0, 0, 0, 0.05);
-}
-.crypto-theme .card {
-    border: 2px solid rgba(0, 217, 255, 0.3);
-}
-
 
 .cta-buttons {
     display: flex;
@@ -89,7 +95,7 @@ h1.domain-name {
     animation: slideUp 0.8s ease 0.4s both;
 }
 
-.cta-button {
+.cta-button, .cta-button-secondary {
     display: inline-block;
     padding: 1rem 2rem;
     text-decoration: none;
@@ -100,30 +106,18 @@ h1.domain-name {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.cta-button:hover {
+.cta-button:hover, .cta-button-secondary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .cta-button-secondary {
-    display: inline-block;
-    padding: 1rem 2rem;
     background: transparent !important;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.125rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
     border: 2px solid;
 }
 
-.cta-button-secondary:hover {
-    transform: translateY(-3px);
-    opacity: 0.8;
-}
-
 .section {
-    padding: 0rem 0 1.5rem 0;
+    padding: 2rem 0;
 }
 
 .container {
@@ -133,90 +127,47 @@ h1.domain-name {
 }
 
 .section-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-family: var(--font-heading);
+    font-size: clamp(calc(1.8rem * var(--font-scale)), calc(4vw * var(--font-scale)), calc(2.8rem * var(--font-scale)));
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
     padding-bottom: 0.5rem;
+    letter-spacing: var(--letter-spacing);
+    text-shadow: var(--text-shadow);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .card {
-    padding: 1rem;
-    border-radius: 20px;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
     text-align: center;
     font-size: 16px;
     transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.3); 
+    border: var(--card-border);
+    border-top: var(--card-border-top);
+    border-bottom: var(--card-border-bottom);
     text-decoration: none;
     color: inherit;
     display: block;
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--card-blur));
+    -webkit-backdrop-filter: blur(var(--card-blur));
+    box-shadow: var(--card-shadow);
 }
 
-.minimal-theme .card {
-    border: 2px solid rgba(0, 0, 0, 0.15);
-}
-
-.crypto-theme .card {
-    border: 2px solid rgba(0, 212, 255, 0.4); 
-}
-
-.royal-theme .card {
-    border: 2px solid rgba(255, 215, 0, 0.4);  
-}
-
-
-.payment-badge {
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-weight: 600;
-    border: 2px solid rgba(255, 255, 255, 0.3); 
-}
-
-.minimal-theme .payment-badge {
-    border: 2px solid rgba(0, 0, 0, 0.15);
-}
-
-.crypto-theme .payment-badge {
-    border: 2px solid rgba(0, 212, 255, 0.4);
-}
-
-.royal-theme .payment-badge {
-    border: 2px solid rgba(255, 215, 0, 0.4);
-}
 a.card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.5); 
+    border-color: rgba(255, 255, 255, 0.5);
 }
-
-.minimal-theme a.card:hover {
-    border-color: rgba(0, 0, 0, 0.3);
-}
-
-.crypto-theme a.card:hover {
-    border-color: rgba(0, 212, 255, 0.6);
-    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3); 
-}
-
-.royal-theme a.card:hover {
-    border-color: rgba(255, 215, 0, 0.6);
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3); 
-}
-
-
-.hero .cta-button-secondary:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;  
-}
-
 
 .label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     opacity: 0.8;
@@ -224,7 +175,7 @@ a.card:hover {
 }
 
 .value {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     word-break: break-all;
 }
@@ -232,19 +183,19 @@ a.card:hover {
 .payment-methods {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     flex-wrap: wrap;
 }
 
 .payment-badge {
     padding: 0.5rem 1rem;
-    border-radius: 25px;
+    border-radius: var(--border-radius);
     font-weight: 600;
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 footer.creator-badge {
-    position: static; 
+    position: static;
     background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(30,30,30,0.9));
     color: white;
     padding: 0.75rem 1.5rem;
@@ -252,7 +203,7 @@ footer.creator-badge {
     font-size: 0.75rem;
     backdrop-filter: blur(10px);
     text-align: center;
-    margin: 20px auto;
+    margin: 40px auto 20px auto;
     width: fit-content;
 }
 footer.creator-badge a {
@@ -264,94 +215,930 @@ footer.creator-badge a:hover {
    text-decoration: underline;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+
+/* ============================================
+ * LEGACY THEME OVERRIDES (backward compatible)
+ * ============================================ */
+
+.minimal-theme .card { border: 2px solid rgba(0, 0, 0, 0.15); }
+.minimal-theme .price-badge, .minimal-theme .domain-badge { background: rgba(0, 0, 0, 0.05); }
+.minimal-theme a.card:hover { border-color: rgba(0, 0, 0, 0.3); }
+.minimal-theme .payment-badge { border: 2px solid rgba(0, 0, 0, 0.15); }
+
+.crypto-theme .card { border: 2px solid rgba(0, 212, 255, 0.4); }
+.crypto-theme a.card:hover { border-color: rgba(0, 212, 255, 0.6); box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3); }
+.crypto-theme .payment-badge { border: 2px solid rgba(0, 212, 255, 0.4); }
+
+.royal-theme .card { border: 2px solid rgba(255, 215, 0, 0.4); }
+.royal-theme a.card:hover { border-color: rgba(255, 215, 0, 0.6); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3); }
+.royal-theme .payment-badge { border: 2px solid rgba(255, 215, 0, 0.4); }
+
+
+/* ============================================
+ * EXTENDED THEME: BRUTALIST (#13)
+ * ============================================ */
+
+.theme-brutalist .domain-badge {
+    background: #000;
+    color: #F5F0E8;
+    border-radius: 0;
+    font-weight: 700;
+    border: 3px solid #000;
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.theme-brutalist .price-badge {
+    background: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    font-weight: 700;
 }
 
+.theme-brutalist .card {
+    border: 3px solid #000;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: 6px 6px 0 #000;
+    text-align: left;
+    transition: all 0.15s ease;
+}
+
+.theme-brutalist a.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #000;
+    border-color: #000;
+}
+
+.theme-brutalist .payment-badge {
+    border: 3px solid #000;
+    border-radius: 0;
+    box-shadow: 3px 3px 0 #000;
+}
+
+.theme-brutalist .section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 3px solid #000;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+}
+
+.theme-brutalist footer.creator-badge {
+    background: #000;
+    border-radius: 0;
+    border: 3px solid #000;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: GLASS (#14)
+ * ============================================ */
+
+.theme-glass .domain-badge {
+    background: rgba(167, 139, 250, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+.theme-glass .price-badge {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.theme-glass .card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.theme-glass a.card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(167, 139, 250, 0.4);
+    box-shadow: 0 12px 40px rgba(167, 139, 250, 0.15);
+    transform: translateY(-4px);
+}
+
+.theme-glass .payment-badge {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+.theme-glass footer.creator-badge {
+    background: rgba(15, 12, 41, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* ============================================
+ * EXTENDED THEME: EDITORIAL (#15)
+ * ============================================ */
+
+.theme-editorial .domain-badge {
+    background: transparent;
+    color: #c23a22;
+    border-radius: 0;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid #c23a22;
+    padding: 0 0 0.3rem 0;
+}
+
+.theme-editorial .price-badge {
+    background: transparent;
+    border-radius: 0;
+    font-style: italic;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.theme-editorial .card {
+    border: none;
+    border-top: 1px solid #d4c5b0;
+    border-radius: 2px;
+    background: transparent;
+    text-align: left;
+    padding: 1.5rem 0.5rem;
+}
+
+.theme-editorial a.card:hover {
+    transform: none;
+    border-color: #c23a22;
+    background: rgba(194, 58, 34, 0.03);
+}
+
+.theme-editorial .payment-badge {
+    border: 1px solid #d4c5b0;
+    border-radius: 2px;
+    background: transparent;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.theme-editorial .section-title {
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.theme-editorial h1.domain-name {
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.theme-editorial .domain-price {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.theme-editorial footer.creator-badge {
+    background: #2c2c2c;
+    border-radius: 2px;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: TERMINAL (#16)
+ * ============================================ */
+
+.theme-terminal .domain-badge {
+    background: transparent;
+    color: #00ff41;
+    border-radius: 0;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    font-size: 0.9rem;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.theme-terminal .domain-badge::before {
+    content: "> ";
+}
+
+.theme-terminal .price-badge {
+    background: transparent;
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 0;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.theme-terminal h1.domain-name {
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 255, 65, 0.2);
+    letter-spacing: 0.02em;
+}
+
+.theme-terminal .domain-price {
+    text-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+}
+
+.theme-terminal .card {
+    border: 1px solid rgba(0, 255, 65, 0.25);
+    border-radius: 0;
+    background: rgba(0, 255, 65, 0.03);
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+    text-align: left;
+}
+
+.theme-terminal .card::before {
+    content: "$ ";
+    opacity: 0.5;
+}
+
+.theme-terminal a.card:hover {
+    background: rgba(0, 255, 65, 0.08);
+    border-color: rgba(0, 255, 65, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+    transform: none;
+}
+
+.theme-terminal .payment-badge {
+    border: 1px solid rgba(0, 255, 65, 0.25);
+    border-radius: 0;
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+}
+
+.theme-terminal .section-title {
+    text-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+    text-transform: uppercase;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    letter-spacing: 0.08em;
+}
+
+.theme-terminal .section-title::before {
+    content: "// ";
+    opacity: 0.5;
+}
+
+.theme-terminal footer.creator-badge {
+    background: rgba(0, 255, 65, 0.05);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 0;
+}
+
+.theme-terminal footer.creator-badge a {
+    color: #00ff41;
+}
+
+/* Terminal scanline overlay */
+.scanline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 65, 0.015) 2px,
+        rgba(0, 255, 65, 0.015) 4px
+    );
+}
+
+
+/* ============================================
+ * EXTENDED THEME: WABI-SABI (#17)
+ * ============================================ */
+
+.theme-wabi .hero {
+    min-height: 50vh;
+    padding: 6rem 1rem 3rem;
+}
+
+.theme-wabi .domain-badge {
+    background: transparent;
+    color: #8c7b6b;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.theme-wabi .price-badge {
+    background: transparent;
+    border-radius: 0;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.6;
+    letter-spacing: 0.15em;
+}
+
+.theme-wabi h1.domain-name {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.theme-wabi .domain-price {
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.theme-wabi .card {
+    border: none;
+    border-bottom: 1px solid #c9bfb0;
+    border-radius: 0;
+    background: transparent;
+    text-align: left;
+    padding: 1.5rem 0;
+}
+
+.theme-wabi a.card:hover {
+    transform: none;
+    border-color: #8c7b6b;
+    background: transparent;
+}
+
+.theme-wabi .payment-badge {
+    border: 1px solid #c9bfb0;
+    border-radius: 0;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+}
+
+.theme-wabi .section-title {
+    font-weight: 300;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.theme-wabi footer.creator-badge {
+    background: #3d3631;
+    border-radius: 0;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: NEUMORPHIC (#18)
+ * ============================================ */
+
+.theme-neumorph .domain-badge {
+    background: #e0e5ec;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #b8bec7, -4px -4px 8px #ffffff;
+    border: none;
+}
+
+.theme-neumorph .price-badge {
+    background: #e0e5ec;
+    border-radius: 12px;
+    box-shadow: inset 3px 3px 6px #b8bec7, inset -3px -3px 6px #ffffff;
+    border: none;
+}
+
+.theme-neumorph .card {
+    background: #e0e5ec;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 8px 8px 16px #b8bec7, -8px -8px 16px #ffffff;
+}
+
+.theme-neumorph a.card:hover {
+    box-shadow: 12px 12px 20px #b8bec7, -12px -12px 20px #ffffff;
+    transform: translateY(-2px);
+    border-color: transparent;
+}
+
+.theme-neumorph .payment-badge {
+    background: #e0e5ec;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #b8bec7, -4px -4px 8px #ffffff;
+}
+
+.theme-neumorph .section-title {
+    color: #4a5568;
+}
+
+.theme-neumorph footer.creator-badge {
+    background: #e0e5ec;
+    color: #4a5568;
+    box-shadow: 4px 4px 8px #b8bec7, -4px -4px 8px #ffffff;
+    border-radius: 16px;
+}
+
+.theme-neumorph footer.creator-badge a {
+    color: #4a5568;
+    font-weight: 700;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: RETRO (#19)
+ * ============================================ */
+
+.theme-retro .domain-badge {
+    background: #48dbfb;
+    color: #1a1128;
+    border-radius: 0;
+    font-weight: 700;
+    border: 2px solid #48dbfb;
+    box-shadow: 3px 3px 0 #ff6ac1;
+    font-size: 0.7rem;
+}
+
+.theme-retro .price-badge {
+    background: transparent;
+    border: 2px solid #48dbfb;
+    border-radius: 0;
+    color: #48dbfb;
+    box-shadow: 3px 3px 0 #ff6ac1;
+    font-size: 0.7rem;
+}
+
+.theme-retro h1.domain-name {
+    text-shadow: 3px 3px 0 #ff6ac1, -1px -1px 0 #48dbfb;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    line-height: 1.4;
+}
+
+.theme-retro .domain-price {
+    text-shadow: 2px 2px 0 rgba(255, 106, 193, 0.4);
+    font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+}
+
+.theme-retro .card {
+    border: 2px solid #ff6ac1;
+    border-radius: 0;
+    background: rgba(255, 106, 193, 0.08);
+    box-shadow: 4px 4px 0 #48dbfb;
+    text-shadow: 1px 1px 0 rgba(255, 106, 193, 0.3);
+    font-size: 0.7rem;
+}
+
+.theme-retro a.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 #48dbfb;
+    background: rgba(255, 106, 193, 0.15);
+    border-color: #48dbfb;
+}
+
+.theme-retro .payment-badge {
+    border: 2px solid #48dbfb;
+    border-radius: 0;
+    box-shadow: 3px 3px 0 #ff6ac1;
+    font-size: 0.65rem;
+}
+
+.theme-retro .section-title {
+    text-shadow: 2px 2px 0 #ff6ac1;
+    text-transform: uppercase;
+    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+}
+
+.theme-retro footer.creator-badge {
+    background: #1a1128;
+    border: 2px solid #ff6ac1;
+    border-radius: 0;
+    box-shadow: 3px 3px 0 #48dbfb;
+}
+
+.theme-retro footer.creator-badge a {
+    color: #48dbfb;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: NEWSPAPER (#20)
+ * ============================================ */
+
+.theme-newspaper .domain-badge {
+    background: #c41e3a;
+    color: #f4f1ec;
+    border-radius: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.3rem 0.8rem;
+}
+
+.theme-newspaper .price-badge {
+    background: transparent;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 1px solid #1a1a1a;
+}
+
+.theme-newspaper h1.domain-name {
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    border-bottom: 4px double #1a1a1a;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.theme-newspaper .domain-price {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.theme-newspaper .card {
+    border: none;
+    border-bottom: 2px solid #1a1a1a;
+    border-radius: 0;
+    background: transparent;
+    text-align: left;
+    padding: 1.2rem 0.5rem;
+}
+
+.theme-newspaper a.card:hover {
+    transform: none;
+    background: rgba(196, 30, 58, 0.04);
+    border-color: #c41e3a;
+}
+
+.theme-newspaper .payment-badge {
+    border: 2px solid #1a1a1a;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+}
+
+.theme-newspaper .section-title {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    border-bottom: 1px solid #1a1a1a;
+    display: inline-block;
+    padding-bottom: 0.2rem;
+}
+
+.theme-newspaper footer.creator-badge {
+    background: #1a1a1a;
+    border-radius: 0;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: NOIR (#21)
+ * ============================================ */
+
+.theme-noir .domain-badge {
+    background: transparent;
+    color: #d4af37;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 0 0 0.3rem 0;
+}
+
+.theme-noir .price-badge {
+    background: transparent;
+    border-radius: 0;
+    color: rgba(212, 175, 55, 0.6);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.theme-noir h1.domain-name {
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+}
+
+.theme-noir .domain-price {
+    color: #d4af37;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.theme-noir .card {
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 0;
+    background: rgba(212, 175, 55, 0.03);
+    text-align: left;
+}
+
+.theme-noir a.card:hover {
+    transform: none;
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(212, 175, 55, 0.06);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
+}
+
+.theme-noir .payment-badge {
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 0;
+    color: #d4af37;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.theme-noir .section-title {
+    color: #d4af37;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.theme-noir footer.creator-badge {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 0;
+}
+
+.theme-noir footer.creator-badge a {
+    color: #d4af37;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: CANDY (#22)
+ * ============================================ */
+
+.theme-candy .domain-badge {
+    background: rgba(233, 30, 144, 0.1);
+    color: #e91e90;
+    border-radius: 50px;
+    font-weight: 700;
+    border: none;
+}
+
+.theme-candy .price-badge {
+    background: rgba(156, 39, 176, 0.08);
+    border-radius: 50px;
+    color: #9c27b0;
+    border: none;
+}
+
+.theme-candy h1.domain-name {
+    font-weight: 800;
+    color: #4a2040;
+}
+
+.theme-candy .domain-price {
+    color: #e91e90;
+    font-weight: 700;
+}
+
+.theme-candy .card {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(233, 30, 144, 0.12);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(233, 30, 144, 0.08);
+}
+
+.theme-candy a.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(233, 30, 144, 0.15);
+    border-color: rgba(233, 30, 144, 0.3);
+}
+
+.theme-candy .payment-badge {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(233, 30, 144, 0.15);
+    border-radius: 50px;
+    color: #e91e90;
+}
+
+.theme-candy .section-title {
+    color: #9c27b0;
+    font-weight: 700;
+}
+
+.theme-candy footer.creator-badge {
+    background: rgba(255, 255, 255, 0.7);
+    color: #4a2040;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(233, 30, 144, 0.1);
+}
+
+.theme-candy footer.creator-badge a {
+    color: #e91e90;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: BLUEPRINT (#23)
+ * ============================================ */
+
+.theme-blueprint .domain-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.theme-blueprint .price-badge {
+    background: transparent;
+    border-radius: 0;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.08em;
+}
+
+.theme-blueprint h1.domain-name {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.theme-blueprint .domain-price {
+    color: #7ec8e3;
+    font-weight: 400;
+}
+
+.theme-blueprint .card {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.04);
+    text-align: left;
+}
+
+.theme-blueprint a.card:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.theme-blueprint .payment-badge {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.theme-blueprint .section-title {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: #7ec8e3;
+}
+
+.theme-blueprint .section-title::before {
+    content: "[ ";
+    opacity: 0.4;
+}
+
+.theme-blueprint .section-title::after {
+    content: " ]";
+    opacity: 0.4;
+}
+
+.theme-blueprint footer.creator-badge {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0;
+}
+
+.theme-blueprint footer.creator-badge a {
+    color: #7ec8e3;
+}
+
+
+/* ============================================
+ * EXTENDED THEME: ZEN GARDEN (#24)
+ * ============================================ */
+
+.theme-zen .hero {
+    min-height: 50vh;
+    padding: 6rem 1rem 3rem;
+}
+
+.theme-zen .domain-badge {
+    background: transparent;
+    color: rgba(143, 188, 143, 0.6);
+    border-radius: 0;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.theme-zen .price-badge {
+    background: transparent;
+    border-radius: 0;
+    color: rgba(143, 188, 143, 0.5);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+}
+
+.theme-zen h1.domain-name {
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    color: #c8d8b8;
+}
+
+.theme-zen .domain-price {
+    font-weight: 300;
+    color: #8fbc8f;
+    letter-spacing: 0.05em;
+}
+
+.theme-zen .card {
+    border: none;
+    border-bottom: 1px solid rgba(143, 188, 143, 0.2);
+    border-radius: 2px;
+    background: rgba(143, 188, 143, 0.05);
+    text-align: left;
+    padding: 1.5rem 0.5rem;
+}
+
+.theme-zen a.card:hover {
+    transform: none;
+    background: rgba(143, 188, 143, 0.08);
+    border-color: rgba(143, 188, 143, 0.4);
+}
+
+.theme-zen .payment-badge {
+    border: 1px solid rgba(143, 188, 143, 0.2);
+    border-radius: 2px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.theme-zen .section-title {
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: rgba(143, 188, 143, 0.6);
+}
+
+.theme-zen footer.creator-badge {
+    background: rgba(143, 188, 143, 0.08);
+    border: 1px solid rgba(143, 188, 143, 0.15);
+    border-radius: 2px;
+}
+
+.theme-zen footer.creator-badge a {
+    color: #8fbc8f;
+}
+
+
+/* ============================================
+ * ANIMATIONS
+ * ============================================ */
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+
+/* ============================================
+ * MEDIA QUERIES (Responsive Design)
+ * ============================================ */
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 2rem 0.5rem 1rem 0.5rem;
-        text-align: center;
-    }
+    .hero { padding: 4rem 1rem; min-height: auto; }
+    h1.domain-name { font-size: 2.5rem; text-align: center; }
+    .domain-price { font-size: 2rem; }
+    .cta-buttons { flex-direction: column; align-items: stretch; gap: 1rem; width: 100%; max-width: 320px; margin: 0 auto; }
+    .cta-button, .cta-button-secondary { width: auto; text-align: center; }
+    .grid { grid-template-columns: 1fr; }
+    .section { padding: 2rem 0; }
+    footer.creator-badge { margin: 15px auto; font-size: 0.75rem; padding: 0.75rem 1.25rem; }
 
-    h1.domain-name {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        text-align: center; 
+    /* Retro theme mobile font size fix */
+    .theme-retro h1.domain-name { font-size: 1.5rem; }
+    .theme-retro .domain-price { font-size: 1.2rem; }
 
-    }
+    /* Newspaper theme mobile fix */
+    .theme-newspaper h1.domain-name { border-bottom-width: 3px; }
 
-    .domain-price {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        width: 100%;
-    }
-
-    .cta-button,
-    .cta-button-secondary {
-        width: 100%;
-        max-width: 280px;
-        padding: 0.875rem 1.5rem;
-        font-size: 1rem;
-        text-align: center; 
-        display: block; 
-        margin: 0 auto;
-
-    }
-
-    .card {
-        padding: 1.25rem;
-        text-align: center; 
-    }
-
-    .payment-methods {
-        gap: 0.75rem;
-        justify-content: center;
-    }
-
-    .payment-badge {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-    }
-
-    .section {
-        padding: 1.5rem 0;
-    }
-
-    footer.creator-badge {
-        margin: 15px auto;
-        font-size: 0.75rem;
-        padding: 0.75rem 1.25rem;
-        text-align: center;
-        display: block; 
-    }
+    /* Blueprint theme mobile fix */
+    .theme-blueprint h1.domain-name { font-size: 2rem; }
 }

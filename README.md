@@ -10,7 +10,7 @@ A free and customizable **domain sale landing page** powered by [Cloudflare Page
 
 - ⚡ Ultra-fast global access (Cloudflare CDN)
 - 🔎 SEO optimized
-- 🎨 Multiple Colors (12 colors available)
+- 🎨 24 unique themes (gradients, editorial, terminal, glass & more)
 - 🔒 Free SSL, zero-cost hosting
 - 🛠️ Easy configuration
 
@@ -106,6 +106,7 @@ To use your own domain (e.g., `yourdomain.com`):
 
 ## 🎨 Template Guide: live demo: https://domainpickup.com
 
+### Classic Themes (1-12) — Gradient-based
 - **Template 1 (Tech):** Purple/Blue gradient - Perfect for .io, .ai, .tech, .app domains
 - **Template 2 (Finance):** Green/Gold - Ideal for finance, invest, trade, money domains
 - **Template 3 (Creative):** Pink/Orange gradient - Great for design, art, studio, creative domains
@@ -119,13 +120,29 @@ To use your own domain (e.g., `yourdomain.com`):
 - **Template 11 (Nature):** Green gradient - Perfect for eco, organic, nature, health domains
 - **Template 12 (Royal):** Purple/Gold - Ideal for premium, regal, exclusive domains
 
+### Extended Themes (13-19) — Distinctive styles
+- **Template 13 (Brutalist):** Raw, bold typography with offset shadows - Ideal for creative agencies, indie brands
+- **Template 14 (Glass):** Frosted glass cards on deep purple - Great for SaaS, modern tech products
+- **Template 15 (Editorial):** Elegant serif typography, warm paper background - Perfect for media, publishing, food brands
+- **Template 16 (Terminal):** Green-on-black hacker aesthetic with scanlines - Best for dev tools, security, CLI products
+- **Template 17 (Wabi-Sabi):** Japanese-inspired minimalism with organic warmth - Ideal for wellness, tea, crafts
+- **Template 18 (Neumorph):** Soft 3D neumorphic cards - Great for fintech, dashboards, modern apps
+- **Template 19 (Retro):** Pixel-art inspired neon pink/cyan - Perfect for gaming, nostalgia, Web3
+
+### More Themes (20-24) — Strong personality
+- **Template 20 (Newspaper):** Classic newspaper layout with red accents - Great for media, news, publishing domains
+- **Template 21 (Noir):** Dark black with gold accents - Ideal for luxury, exclusive, high-end brands
+- **Template 22 (Candy):** Pastel gradient with pink/purple - Perfect for beauty, lifestyle, consumer brands
+- **Template 23 (Blueprint):** Technical blueprint grid on deep blue - Best for engineering, architecture, CAD domains
+- **Template 24 (Zen Garden):** Dark forest green with sage accents - Great for wellness, meditation, nature brands
+
 ---
 
 ## ✅ Checklist
 
 - [ ] Updated domain name in config.js
 - [ ] Set correct price and currency
-- [ ] Selected appropriate template (1-12)
+- [ ] Selected appropriate template (1-24)
 - [ ] Added at least 3 compelling features
 - [ ] Added contact information (email/telegram/whatsapp)
 
@@ -135,7 +152,7 @@ To use your own domain (e.g., `yourdomain.com`):
 
 - **Deployment failed?** → Make sure `index.html` is in the root folder.
 - **Page not updating?** → Wait 1–2 minutes or clear your browser cache.
-- **Change theme?** → Update the `template` value (1–12) in your config.
+- **Change theme?** → Update the `template` value (1–24) in your config.
 
 ---
 

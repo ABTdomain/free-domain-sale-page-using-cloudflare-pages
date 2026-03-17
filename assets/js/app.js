@@ -146,10 +146,23 @@ class DomainPage {
         root.style.setProperty('--button-text', t.buttonTextColor);
 
         // --- Background ---
-        body.style.background = t.background;
-        body.style.backgroundAttachment = 'fixed';
-        body.style.backgroundSize = '100vw 100vh';
-        body.style.backgroundRepeat = 'no-repeat';
+        // On mobile (≤768px): set gradient on <html> with scroll attachment
+        // to avoid iOS fixed-background jank and gradient cutoff below the fold.
+        // On desktop: keep gradient on <body> with fixed attachment (parallax-like).
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (isMobile) {
+            body.style.background = 'transparent';
+            root.style.background = t.background;
+            root.style.backgroundAttachment = 'scroll';
+            root.style.backgroundSize = '100% 100%';
+            root.style.backgroundRepeat = 'no-repeat';
+        } else {
+            root.style.background = '';
+            body.style.background = t.background;
+            body.style.backgroundAttachment = 'fixed';
+            body.style.backgroundSize = '100vw 100vh';
+            body.style.backgroundRepeat = 'no-repeat';
+        }
         body.style.color = t.textColor;
 
         // --- Extended: Typography ---

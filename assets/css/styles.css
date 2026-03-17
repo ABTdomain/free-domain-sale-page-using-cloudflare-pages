@@ -1119,26 +1119,104 @@ footer.creator-badge a:hover {
 
 
 /* ============================================
+ * ACCESSIBILITY: Reduced Motion
+ * ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .scanline-overlay { display: none; }
+}
+
+
+/* ============================================
+ * TOUCH DEVICE SUPPORT
+ * ============================================ */
+
+@media (hover: none) {
+    a.card:hover { transform: none; }
+    .cta-button:hover, .cta-button-secondary:hover {
+        transform: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    a.card:active { opacity: 0.85; }
+    .cta-button:active, .cta-button-secondary:active {
+        transform: scale(0.97);
+    }
+}
+
+
+/* ============================================
  * MEDIA QUERIES (Responsive Design)
  * ============================================ */
 
+/* --- Tablet (≤ 1024px) --- */
+@media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .container { padding: 1rem; }
+}
+
+/* --- Mobile (≤ 768px) --- */
 @media (max-width: 768px) {
-    .hero { padding: 4rem 1rem; min-height: auto; }
-    h1.domain-name { font-size: 2.5rem; text-align: center; }
-    .domain-price { font-size: 2rem; }
-    .cta-buttons { flex-direction: column; align-items: stretch; gap: 1rem; width: 100%; max-width: 320px; margin: 0 auto; }
-    .cta-button, .cta-button-secondary { width: auto; text-align: center; }
+    .hero { padding: 3rem 1rem; min-height: auto; }
+    h1.domain-name { font-size: clamp(1.8rem, 7vw, 2.5rem); text-align: center; }
+    .domain-price { font-size: clamp(1.5rem, 5vw, 2rem); }
+    .cta-buttons { flex-direction: column; align-items: stretch; gap: 0.75rem; width: 100%; max-width: 320px; margin: 0 auto; }
+    .cta-button, .cta-button-secondary { width: auto; text-align: center; min-height: 48px; display: flex; align-items: center; justify-content: center; }
     .grid { grid-template-columns: 1fr; }
-    .section { padding: 2rem 0; }
-    footer.creator-badge { margin: 15px auto; font-size: 0.75rem; padding: 0.75rem 1.25rem; }
+    .section { padding: 1.5rem 0; }
+    .section-title { font-size: clamp(1.3rem, 4vw, 1.8rem); }
+    .label { font-size: 0.85rem; }
+    footer.creator-badge { margin: 15px auto; font-size: 0.85rem; padding: 0.75rem 1.25rem; }
 
-    /* Retro theme mobile font size fix */
-    .theme-retro h1.domain-name { font-size: 1.5rem; }
-    .theme-retro .domain-price { font-size: 1.2rem; }
+    /* iOS: fixed background causes jank */
+    body { background-attachment: scroll !important; }
 
-    /* Newspaper theme mobile fix */
+    /* Brutalist theme: reduce shadows */
+    .theme-brutalist .card { box-shadow: 3px 3px 0 #000; }
+    .theme-brutalist a.card:hover { box-shadow: 4px 4px 0 #000; }
+    .theme-brutalist .payment-badge { box-shadow: 2px 2px 0 #000; }
+
+    /* Neumorphic theme: lighter shadows */
+    .theme-neumorph .card { box-shadow: 5px 5px 10px #b8bec7, -5px -5px 10px #ffffff; }
+    .theme-neumorph .payment-badge { box-shadow: 3px 3px 6px #b8bec7, -3px -3px 6px #ffffff; }
+
+    /* Retro theme */
+    .theme-retro h1.domain-name { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+    .theme-retro .domain-price { font-size: clamp(1rem, 3.5vw, 1.4rem); }
+    .theme-retro .card { box-shadow: 3px 3px 0 #48dbfb; font-size: 0.65rem; }
+    .theme-retro .section-title { font-size: clamp(0.7rem, 2.5vw, 1.2rem); }
+
+    /* Newspaper theme */
     .theme-newspaper h1.domain-name { border-bottom-width: 3px; }
 
-    /* Blueprint theme mobile fix */
-    .theme-blueprint h1.domain-name { font-size: 2rem; }
+    /* Blueprint theme */
+    .theme-blueprint h1.domain-name { font-size: clamp(1.5rem, 5vw, 2rem); }
+}
+
+/* --- Small phones (≤ 480px) --- */
+@media (max-width: 480px) {
+    .hero { padding: 2.5rem 0.75rem; }
+    h1.domain-name { font-size: clamp(1.5rem, 8vw, 2.2rem); }
+    .domain-price { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+    .domain-badge { font-size: 1rem; padding: 0.4rem 0.8rem; }
+    .card { padding: 1.25rem; }
+    .cta-buttons { max-width: 100%; padding: 0 0.5rem; }
+    .payment-methods { gap: 0.5rem; }
+    .payment-badge { padding: 0.4rem 0.75rem; font-size: 0.85rem; }
+    .container { padding: 0.75rem; }
+}
+
+/* --- Safe area (iPhone notch / Dynamic Island) --- */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+    footer.creator-badge {
+        padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    }
 }

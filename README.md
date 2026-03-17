@@ -104,37 +104,48 @@ To use your own domain (e.g., `yourdomain.com`):
 ✨ Your domain sale page is ready in just **~5 minutes**!  
 
 
-## 🎨 Template Guide: live demo: https://domainpickup.com
+## 🎨 Theme Gallery — 24 Built-in Themes
 
-### Classic Themes (1-12) — Gradient-based
-- **Template 1 (Tech):** Purple/Blue gradient - Perfect for .io, .ai, .tech, .app domains
-- **Template 2 (Finance):** Green/Gold - Ideal for finance, invest, trade, money domains
-- **Template 3 (Creative):** Pink/Orange gradient - Great for design, art, studio, creative domains
-- **Template 4 (Minimal):** Black & White - Best for short, brand, premium domains
-- **Template 5 (Crypto):** Dark/Neon cyan - Perfect for crypto, NFT, Web3, blockchain domains
-- **Template 6 (Corporate):** Navy/Deep blue - Suitable for corporate, consulting, business domains
-- **Template 7 (Luxury):** Gold/Black - Ideal for luxury, premium, exclusive domains
-- **Template 8 (Ocean):** Blue/Cyan gradient - Perfect for marine, travel, water-related domains
-- **Template 9 (Sunset):** Red/Yellow gradient - Great for warm, friendly, community domains
-- **Template 10 (Dark):** Black/Gray - Best for gaming, tech, modern domains
-- **Template 11 (Nature):** Green gradient - Perfect for eco, organic, nature, health domains
-- **Template 12 (Royal):** Purple/Gold - Ideal for premium, regal, exclusive domains
+Preview every theme live at [portfolio.domainpickup.com](https://portfolio.domainpickup.com)
 
-### Extended Themes (13-19) — Distinctive styles
-- **Template 13 (Brutalist):** Raw, bold typography with offset shadows - Ideal for creative agencies, indie brands
-- **Template 14 (Glass):** Frosted glass cards on deep purple - Great for SaaS, modern tech products
-- **Template 15 (Editorial):** Elegant serif typography, warm paper background - Perfect for media, publishing, food brands
-- **Template 16 (Terminal):** Green-on-black hacker aesthetic with scanlines - Best for dev tools, security, CLI products
-- **Template 17 (Wabi-Sabi):** Japanese-inspired minimalism with organic warmth - Ideal for wellness, tea, crafts
-- **Template 18 (Neumorph):** Soft 3D neumorphic cards - Great for fintech, dashboards, modern apps
-- **Template 19 (Retro):** Pixel-art inspired neon pink/cyan - Perfect for gaming, nostalgia, Web3
+### Classic Themes (1–12) — Gradient-based
 
-### More Themes (20-24) — Strong personality
-- **Template 20 (Newspaper):** Classic newspaper layout with red accents - Great for media, news, publishing domains
-- **Template 21 (Noir):** Dark black with gold accents - Ideal for luxury, exclusive, high-end brands
-- **Template 22 (Candy):** Pastel gradient with pink/purple - Perfect for beauty, lifestyle, consumer brands
-- **Template 23 (Blueprint):** Technical blueprint grid on deep blue - Best for engineering, architecture, CAD domains
-- **Template 24 (Zen Garden):** Dark forest green with sage accents - Great for wellness, meditation, nature brands
+| # | Theme | Style | Best For | Live Demo |
+|---|-------|-------|----------|-----------|
+| 1 | **Tech** | Purple → Violet gradient | .io, .ai, .tech, .app domains | [Preview](https://1.portfolio.domainpickup.com) |
+| 2 | **Finance** | Teal → Dark Green gradient | Finance, invest, trade domains | [Preview](https://2.portfolio.domainpickup.com) |
+| 3 | **Creative** | Pink → Orange gradient | Design, art, studio domains | [Preview](https://3.portfolio.domainpickup.com) |
+| 4 | **Minimal** | Black & White, clean | Short, brand, premium domains | [Preview](https://4.portfolio.domainpickup.com) |
+| 5 | **Crypto** | Dark + Neon Cyan accents | Crypto, NFT, Web3 domains | [Preview](https://5.portfolio.domainpickup.com) |
+| 6 | **Corporate** | Navy → Deep Blue gradient | Corporate, consulting domains | [Preview](https://6.portfolio.domainpickup.com) |
+| 7 | **Luxury** | Gold → Black gradient | Luxury, premium, exclusive | [Preview](https://7.portfolio.domainpickup.com) |
+| 8 | **Ocean** | Blue → Cyan gradient | Marine, travel, water domains | [Preview](https://8.portfolio.domainpickup.com) |
+| 9 | **Sunset** | Red → Yellow gradient | Warm, friendly, community | [Preview](https://9.portfolio.domainpickup.com) |
+| 10 | **Dark** | Charcoal → Black gradient | Gaming, tech, modern domains | [Preview](https://10.portfolio.domainpickup.com) |
+| 11 | **Nature** | Forest Green → Sage gradient | Eco, organic, health domains | [Preview](https://11.portfolio.domainpickup.com) |
+| 12 | **Royal** | Indigo → Dark Magenta gradient | Premium, regal, exclusive | [Preview](https://12.portfolio.domainpickup.com) |
+
+### Extended Themes (13–19) — Distinctive Styles
+
+| # | Theme | Style | Best For | Live Demo |
+|---|-------|-------|----------|-----------|
+| 13 | **Brutalist** | Raw typography, offset shadows | Creative agencies, indie brands | [Preview](https://13.portfolio.domainpickup.com) |
+| 14 | **Glass** | Frosted glass cards, deep purple | SaaS, modern tech products | [Preview](https://14.portfolio.domainpickup.com) |
+| 15 | **Editorial** | Elegant serif, warm paper bg | Media, publishing, food brands | [Preview](https://15.portfolio.domainpickup.com) |
+| 16 | **Terminal** | Green-on-black, scanlines | Dev tools, security, CLI | [Preview](https://16.portfolio.domainpickup.com) |
+| 17 | **Wabi-Sabi** | Japanese minimalism, organic | Wellness, tea, crafts | [Preview](https://17.portfolio.domainpickup.com) |
+| 18 | **Neumorph** | Soft 3D neumorphic cards | Fintech, dashboards, apps | [Preview](https://18.portfolio.domainpickup.com) |
+| 19 | **Retro** | 80s neon pink/cyan, pixel font | Gaming, nostalgia, Web3 | [Preview](https://19.portfolio.domainpickup.com) |
+
+### More Themes (20–24) — Strong Personality
+
+| # | Theme | Style | Best For | Live Demo |
+|---|-------|-------|----------|-----------|
+| 20 | **Newspaper** | Classic print, red accents | Media, news, publishing | [Preview](https://20.portfolio.domainpickup.com) |
+| 21 | **Noir** | Film noir black + gold | Luxury, exclusive, high-end | [Preview](https://21.portfolio.domainpickup.com) |
+| 22 | **Candy** | Pastel pink → purple → blue | Beauty, lifestyle, consumer | [Preview](https://22.portfolio.domainpickup.com) |
+| 23 | **Blueprint** | Technical grid, deep blue | Engineering, architecture | [Preview](https://23.portfolio.domainpickup.com) |
+| 24 | **Zen Garden** | Dark sage green, peaceful | Wellness, meditation, nature | [Preview](https://24.portfolio.domainpickup.com) |
 
 ---
 

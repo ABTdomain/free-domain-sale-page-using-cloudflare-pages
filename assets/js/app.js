@@ -110,6 +110,22 @@ class DomainPage {
         if (ogDesc) {
             ogDesc.content = description;
         }
+
+        // OG URL
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+            ogUrl.content = `https://${this.config.domain}/`;
+        }
+
+        // Twitter card tags
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) {
+            twitterTitle.content = ogTitle ? ogTitle.content : `${this.config.domain} is for sale`;
+        }
+        const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) {
+            twitterDesc.content = description;
+        }
     }
 
     formatPrice() {
